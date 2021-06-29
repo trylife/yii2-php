@@ -1,7 +1,8 @@
 FROM yiisoftware/yii2-php:7.4-apache
 
 # workdir /app
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git zip unzip libzip-dev
+RUN docker-php-ext-install zip
 ADD WeWorkFinance /WeWorkFinance
 RUN ls -ls /WeWorkFinance
 RUN cd / && git clone https://github.com/pangdahua/php7-wxwork-finance-sdk.git
